@@ -31,6 +31,23 @@
 ### SQL Setup
 
 ```sql
+
+-- Create users table
+CREATE TABLE users (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  enabled BOOLEAN DEFAULT TRUE NOT NULL
+);
+
+-- Insert data into users table (password is test1)
+INSERT INTO users (username, password, enabled)
+VALUES 
+    ('doston', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true),
+    ('susan', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true),
+    ('john', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true),
+    ('mary', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true);
+
 -- Create authorities table
 CREATE TABLE authorities (
   username VARCHAR(50) NOT NULL,
@@ -49,18 +66,4 @@ VALUES
     ('doston', 'ROLE_USER'),
     ('doston', 'ROLE_ADMIN');
 
--- Create users table
-CREATE TABLE users (
-  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  username VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  enabled BOOLEAN DEFAULT TRUE NOT NULL
-);
 
--- Insert data into users table (password is test1)
-INSERT INTO users (username, password, enabled)
-VALUES 
-    ('doston', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true),
-    ('susan', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true),
-    ('john', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true),
-    ('mary', '$2a$12$TxN2LNfDBpRRSfm4VyLVguEghcoU3mZhDdpCOYzGHQfdHONZYFJzm', true);
