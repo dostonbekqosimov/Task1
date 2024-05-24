@@ -48,10 +48,8 @@ public class SecurityConfig {
 
         return jdbcUserDetailsManager;
     }
-//
-//    public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
-//        this.userDetailsService = userDetailsService;
-//    }
+
+
 
 
     @Bean
@@ -73,12 +71,11 @@ public class SecurityConfig {
                                 .anyRequest().authenticated()
                 );
 
-        // use HTTP Basic authentication
+       
         http.httpBasic(withDefaults());
 
 
-        // disable Cross Site Request Forgery (CSRF)
-        // in general, not required for stateless REST APIs that use POST, PUT, DELETE and/or PATCH
+   
         http.csrf(csrf -> csrf.disable());
 
         return http.build();
