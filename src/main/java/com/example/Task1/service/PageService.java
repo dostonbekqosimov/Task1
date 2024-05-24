@@ -3,11 +3,11 @@ package com.example.Task1.service;
 import com.example.Task1.entity.Page;
 import com.example.Task1.entity.PageDTO;
 import com.example.Task1.entity.Story;
+import com.example.Task1.handler.ResourceNotFoundException;
 import com.example.Task1.repository.PageRepository;
 import com.example.Task1.repository.StoryRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +21,11 @@ public class PageService {
     private StoryRepository storyRepository;
 
     public List<Page> getAllPagesByStoryId(Long storyId) {
+
+        if (pageRepository.findByStoryId(storyId).isEmpty()) {
+            throw new ResourceNotFoundException("Story not found");
+        }
+
 
         return pageRepository.findByStoryId(storyId);
     }
@@ -54,7 +59,7 @@ public class PageService {
         pageRepository.save(page);
     }
 
-
+    @Transactional
     public Page addPageToStory(Long storyId, PageDTO pageDTO) {
 
 

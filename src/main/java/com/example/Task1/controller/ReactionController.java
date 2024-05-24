@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/reactions")
+@RequestMapping("/reactions")
 public class ReactionController {
 
     @Autowired
     private PageService pageService;
 
 
-    // bularni yani reactionga tegishli narsalarni alohida qilishim kerak
-    @GetMapping("/{pageId}/likes")
+    @GetMapping("{pageId}/likes")
     public int getLikesForPage(@PathVariable Long pageId) {
+
         return pageService.getLikesForPage(pageId);
     }
 

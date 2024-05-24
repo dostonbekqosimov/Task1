@@ -3,6 +3,7 @@ package com.example.Task1.controller;
 import com.example.Task1.entity.Page;
 import com.example.Task1.entity.PageDTO;
 import com.example.Task1.entity.Story;
+import com.example.Task1.entity.StoryDTO;
 import com.example.Task1.service.PageService;
 import com.example.Task1.service.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +27,18 @@ public class StoryController {
         return storyService.getAllStories();
     }
 
+
+    //
     @GetMapping("{id}")
     public Story getStoryById(@PathVariable Long id){
         return storyService.getStoryById(id);
     }
 
     @PostMapping("/story")
-    public Story addStory(@RequestBody Story story){
-        return storyService.addStory(story);
+    public Story addStory(@RequestBody StoryDTO storyDTO){
+        return storyService.addStory(storyDTO);
     }
+
 
     @PostMapping("/{storyId}/pages")
     public Page addPageToStory(@PathVariable Long storyId, @RequestBody PageDTO pageDTO) {

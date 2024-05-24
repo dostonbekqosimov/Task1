@@ -3,7 +3,6 @@ package com.example.Task1.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "users")

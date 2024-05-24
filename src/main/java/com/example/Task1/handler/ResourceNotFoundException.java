@@ -1,4 +1,4 @@
-package com.example.Task1.service;
+package com.example.Task1.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
