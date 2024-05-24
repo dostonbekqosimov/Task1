@@ -27,25 +27,7 @@ public class PageController {
 
 
 
-    // bularni yani reactionga tegishli narsalarni alohida qilishim kerak
 
-    @GetMapping("/{pageId}/likes")
-    public int getLikesForPage(@PathVariable Long pageId) {
-        return pageService.getLikesForPage(pageId);
-    }
 
-    @GetMapping("/{pageId}/dislikes")
-    public int getDislikesForPage(@PathVariable Long pageId) {
-        return pageService.getDislikesForPage(pageId);
-    }
 
-    @PutMapping("/{pageId}/like")
-    public void likePage(@PathVariable Long pageId) {
-        pageService.incrementLikes(pageId);
-    }
-
-    @PutMapping("/{pageId}/dislike")
-    public void dislikePage(@PathVariable Long pageId) {
-        pageService.incrementDislikes(pageId);
-    }
 }
